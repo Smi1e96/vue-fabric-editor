@@ -69,7 +69,9 @@ var CanvasEventEmitter = /*#__PURE__*/function (_EventEmitter) {
       if (!this.handler) {
         throw TypeError('还未初始化');
       }
-      var actives = this.handler.getActiveObjects().filter(function (item) {
+      var actives = this.handler.getActiveObjects()
+      //@ts-ignore
+      .filter(function (item) {
         return !(item instanceof fabric.GuideLine);
       }); // 过滤掉辅助线
       if (actives && actives.length === 1) {

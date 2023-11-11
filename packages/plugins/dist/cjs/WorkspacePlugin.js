@@ -30,8 +30,8 @@ var WorkspacePlugin = /*#__PURE__*/function () {
     this.canvas = canvas;
     this.editor = editor;
     this.init({
-      width: 900,
-      height: 2000
+      width: 1920,
+      height: 1080
     });
   }
   _createClass(WorkspacePlugin, [{
@@ -41,6 +41,7 @@ var WorkspacePlugin = /*#__PURE__*/function () {
       if (!workspaceEl) {
         throw new Error('element #workspace is missing, plz check!');
       }
+      console.log('======');
       this.workspaceEl = workspaceEl;
       this.workspace = null;
       this.option = option;
@@ -101,6 +102,7 @@ var WorkspacePlugin = /*#__PURE__*/function () {
       var _this$option = this.option,
         width = _this$option.width,
         height = _this$option.height;
+      console.log('_initWorkspace', width);
       var workspace = new _fabric.fabric.Rect({
         fill: 'rgba(255,255,255,1)',
         width: width,

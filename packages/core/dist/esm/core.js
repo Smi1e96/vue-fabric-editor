@@ -20,13 +20,10 @@ import { AsyncSeriesHook } from 'tapable';
 var Editor = /*#__PURE__*/function (_EventEmitter) {
   _inherits(Editor, _EventEmitter);
   var _super = _createSuper(Editor);
-  function Editor() {
+  function Editor(canvas) {
     var _this;
     _classCallCheck(this, Editor);
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-    _this = _super.call.apply(_super, [this].concat(args));
+    _this = _super.call(this);
     _defineProperty(_assertThisInitialized(_this), "canvas", void 0);
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     _defineProperty(_assertThisInitialized(_this), "contextMenu", void 0);
@@ -38,20 +35,16 @@ var Editor = /*#__PURE__*/function (_EventEmitter) {
     // 生命周期函数名
     _defineProperty(_assertThisInitialized(_this), "hooks", ['hookImportBefore', 'hookImportAfter', 'hookSaveBefore', 'hookSaveAfter']);
     _defineProperty(_assertThisInitialized(_this), "hooksEntity", {});
+    _this.canvas = canvas;
+    // this._initContextMenu();
+    // this._bindContextMenu();
+    // this._initActionHooks();
+    // this._initServersPlugin();
     return _this;
   }
   _createClass(Editor, [{
     key: "init",
-    value:
-    // constructor(canvas: fabric.Canvas) {
-    //   super();
-    //   this.canvas = canvas;
-    //   this._initContextMenu();
-    //   this._bindContextMenu();
-    //   this._initActionHooks();
-    //   this._initServersPlugin();
-    // }
-    function init(canvas) {
+    value: function init(canvas) {
       this.canvas = canvas;
       this._initContextMenu();
       this._bindContextMenu();

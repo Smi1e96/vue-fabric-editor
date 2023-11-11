@@ -11,6 +11,7 @@ declare class Editor extends EventEmitter {
     hooksEntity: {
         [propName: string]: AsyncSeriesHook<string>;
     };
+    constructor(canvas: fabric.Canvas);
     init(canvas: fabric.Canvas): void;
     use(plugin: IPluginClass, options: IPluginOption): void;
     getPlugin(name: string): IPluginTempl | undefined;

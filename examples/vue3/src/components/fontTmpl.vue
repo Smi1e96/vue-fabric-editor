@@ -71,6 +71,7 @@ const insertFile = (str) => {
   });
   const obj = JSON.parse(str);
   obj.id = uuid();
+  console.log(obj);
   new fabric.Textbox.fromObject(obj, (e) => {
     canvasEditor.canvas.add(e);
     e.center();

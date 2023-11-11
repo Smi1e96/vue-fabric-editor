@@ -25,14 +25,14 @@ class Editor extends EventEmitter {
   hooksEntity: {
     [propName: string]: AsyncSeriesHook<string>;
   } = {};
-  // constructor(canvas: fabric.Canvas) {
-  //   super();
-  //   this.canvas = canvas;
-  //   this._initContextMenu();
-  //   this._bindContextMenu();
-  //   this._initActionHooks();
-  //   this._initServersPlugin();
-  // }
+  constructor(canvas: fabric.Canvas) {
+    super();
+    this.canvas = canvas;
+    // this._initContextMenu();
+    // this._bindContextMenu();
+    // this._initActionHooks();
+    // this._initServersPlugin();
+  }
   init(canvas: fabric.Canvas) {
     this.canvas = canvas;
     this._initContextMenu();
@@ -46,6 +46,7 @@ class Editor extends EventEmitter {
     if (this._checkPlugin(plugin)) {
       this._saveCustomAttr(plugin);
       const pluginRunTime = new plugin(this.canvas, this, options);
+      console.log(plugin, pluginRunTime)
       this.pluginMap[plugin.pluginName] = pluginRunTime;
       this._bindingHooks(pluginRunTime);
       this._bindingHotkeys(pluginRunTime);

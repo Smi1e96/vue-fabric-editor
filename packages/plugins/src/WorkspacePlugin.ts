@@ -24,8 +24,8 @@ class WorkspacePlugin {
     this.canvas = canvas;
     this.editor = editor;
     this.init({
-      width: 900,
-      height: 2000,
+      width: 1920,
+      height: 1080,
     });
   }
 
@@ -81,7 +81,8 @@ class WorkspacePlugin {
 
   // 初始化画布
   _initWorkspace() {
-    const { width, height } = this.option;
+    const { width, height } = this.option;  
+    console.log('_initWorkspace', width);
     const workspace = new fabric.Rect({
       fill: 'rgba(255,255,255,1)',
       width,

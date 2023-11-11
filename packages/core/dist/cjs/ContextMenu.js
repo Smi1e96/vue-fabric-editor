@@ -4,30 +4,39 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
+require("./contextMenu.css");
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
-function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
+function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function (_e) { function e(_x) { return _e.apply(this, arguments); } e.toString = function () { return _e.toString(); }; return e; }(function (e) { throw e; }), f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function (_e2) { function e(_x2) { return _e2.apply(this, arguments); } e.toString = function () { return _e2.toString(); }; return e; }(function (e) { didErr = true; err = e; }), f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
-function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
-/* eslint-disable no-prototype-builtins */
-/*
- * @Author: 秦少卫
- * @Date: 2023-05-25 22:33:23
- * @LastEditors: 秦少卫
- * @LastEditTime: 2023-05-25 23:06:29
- * @Description: 右键菜单
- */
-/* Author: @UnrealSec */
-// import '@/styles/contextMenu.css';
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); } /* eslint-disable no-prototype-builtins */ /*
+                                                                                                                                                                                                                                                                                                                                                                                                                                          * @Author: 秦少卫
+                                                                                                                                                                                                                                                                                                                                                                                                                                          * @Date: 2023-05-25 22:33:23
+                                                                                                                                                                                                                                                                                                                                                                                                                                          * @LastEditors: 秦少卫
+                                                                                                                                                                                                                                                                                                                                                                                                                                          * @LastEditTime: 2023-05-25 23:06:29
+                                                                                                                                                                                                                                                                                                                                                                                                                                          * @Description: 右键菜单
+                                                                                                                                                                                                                                                                                                                                                                                                                                          */
 // @ts-nocheck
 var ContextMenu = /*#__PURE__*/function () {
   function ContextMenu(container, items) {
     var _this = this;
     _classCallCheck(this, ContextMenu);
+    _defineProperty(this, "container", void 0);
+    _defineProperty(this, "dom", void 0);
+    _defineProperty(this, "shown", void 0);
+    _defineProperty(this, "root", void 0);
+    _defineProperty(this, "parent", void 0);
+    _defineProperty(this, "submenus", void 0);
+    _defineProperty(this, "items", void 0);
+    _defineProperty(this, "_onclick", void 0);
+    _defineProperty(this, "_oncontextmenu", void 0);
+    _defineProperty(this, "_oncontextmenu_keydown", void 0);
+    _defineProperty(this, "_onblur", void 0);
     this.container = container;
     this.dom = null;
     this.shown = false;
@@ -36,22 +45,23 @@ var ContextMenu = /*#__PURE__*/function () {
     this.submenus = [];
     this.items = items;
     this._onclick = function (e) {
-      if (_this.dom && e.target != _this.dom && e.target.parentElement != _this.dom && !e.target.classList.contains('item') && !e.target.parentElement.classList.contains('item')) {
+      if (_this.dom && e.target instanceof HTMLElement && e.target != _this.dom && e.target.parentElement != _this.dom && !e.target.classList.contains('item') && !(e.target.parentElement instanceof HTMLElement && e.target.parentElement.classList.contains('item'))) {
         _this.hideAll();
       }
     };
     this._oncontextmenu = function (e) {
       e.preventDefault();
-      if (e.target != _this.dom && e.target.parentElement != _this.dom && !e.target.classList.contains('item') && !e.target.parentElement.classList.contains('item')) {
+      if (e.target != _this.dom && e.target instanceof HTMLElement && (!e.target.parentElement || e.target.parentElement != _this.dom) && !e.target.classList.contains('item') && (!e.target.parentElement || !e.target.parentElement.classList.contains('item'))) {
+        var mouseEvent = e;
         _this.hideAll();
-        _this.show(e.clientX, e.clientY);
+        _this.show(mouseEvent.clientX, mouseEvent.clientY);
       }
     };
     this._oncontextmenu_keydown = function (e) {
       if (e.keyCode != 93) return;
       e.preventDefault();
       _this.hideAll();
-      _this.show(e.clientX, e.clientY);
+      _this.show(0, 0);
     };
     this._onblur = function () {
       _this.hideAll();
@@ -82,7 +92,7 @@ var ContextMenu = /*#__PURE__*/function () {
       var _this2 = this;
       var item = document.createElement('div');
       if (data === null) {
-        item.classList = 'separator';
+        item.className = 'separator';
         return item;
       }
       if (data.hasOwnProperty('color') && /^#([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(data.color.toString())) {
@@ -90,7 +100,7 @@ var ContextMenu = /*#__PURE__*/function () {
       }
       item.classList.add('item');
       var label = document.createElement('span');
-      label.classList = 'label';
+      label.className = 'label';
       label.innerText = data.hasOwnProperty('text') ? data['text'].toString() : '';
       item.appendChild(label);
       if (data.hasOwnProperty('disabled') && data['disabled']) {
@@ -99,7 +109,7 @@ var ContextMenu = /*#__PURE__*/function () {
         item.classList.add('enabled');
       }
       var hotkey = document.createElement('span');
-      hotkey.classList = 'hotkey';
+      hotkey.className = 'hotkey';
       hotkey.innerText = data.hasOwnProperty('hotkey') ? data['hotkey'].toString() : '';
       item.appendChild(hotkey);
       if (data.hasOwnProperty('subitems') && Array.isArray(data['subitems']) && data['subitems'].length > 0) {

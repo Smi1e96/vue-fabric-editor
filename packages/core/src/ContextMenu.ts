@@ -6,12 +6,22 @@
  * @LastEditTime: 2023-05-25 23:06:29
  * @Description: 右键菜单
  */
-/* Author: @UnrealSec */
-// import '@/styles/contextMenu.css';
+import './contextMenu.css';
 
 // @ts-nocheck
 class ContextMenu {
-  constructor(container, items) {
+  container: any;
+  dom: any;
+  shown: boolean;
+  root: boolean;
+  parent: any;
+  submenus: Array<any>;
+  items: Array<any>;
+  _onclick: (e: MouseEvent) => void;
+  _oncontextmenu: (e: Event) => void;
+  _oncontextmenu_keydown: (e: KeyboardEvent) => void;
+  _onblur: () => void;
+  constructor(container:any, items:any) {
     this.container = container;
     this.dom = null;
     this.shown = false;
@@ -20,37 +30,40 @@ class ContextMenu {
     this.submenus = [];
     this.items = items;
 
-    this._onclick = (e) => {
+    this._onclick = (e: Event) => {
       if (
         this.dom &&
+        e.target instanceof HTMLElement &&
         e.target != this.dom &&
         e.target.parentElement != this.dom &&
         !e.target.classList.contains('item') &&
-        !e.target.parentElement.classList.contains('item')
+        !(e.target.parentElement instanceof HTMLElement && e.target.parentElement.classList.contains('item'))
       ) {
         this.hideAll();
       }
     };
 
-    this._oncontextmenu = (e) => {
+    this._oncontextmenu = (e: Event) => {
       e.preventDefault();
       if (
         e.target != this.dom &&
-        e.target.parentElement != this.dom &&
+        e.target instanceof HTMLElement &&
+        (!e.target.parentElement || e.target.parentElement != this.dom) &&
         !e.target.classList.contains('item') &&
-        !e.target.parentElement.classList.contains('item')
+        (!e.target.parentElement || !e.target.parentElement.classList.contains('item'))
       ) {
+        const mouseEvent = e as MouseEvent;
         this.hideAll();
-        this.show(e.clientX, e.clientY);
+        this.show(mouseEvent.clientX, mouseEvent.clientY);
       }
     };
 
-    this._oncontextmenu_keydown = (e) => {
+    this._oncontextmenu_keydown = (e: KeyboardEvent) => {
       if (e.keyCode != 93) return;
       e.preventDefault();
 
       this.hideAll();
-      this.show(e.clientX, e.clientY);
+      this.show(0, 0);
     };
 
     this._onblur = () => {
@@ -69,11 +82,11 @@ class ContextMenu {
     return menu;
   }
 
-  itemToDomEl(data) {
+  itemToDomEl(data: any) {
     const item = document.createElement('div');
 
     if (data === null) {
-      item.classList = 'separator';
+      item.className = 'separator';
       return item;
     }
 
@@ -87,7 +100,7 @@ class ContextMenu {
     item.classList.add('item');
 
     const label = document.createElement('span');
-    label.classList = 'label';
+    label.className = 'label';
     label.innerText = data.hasOwnProperty('text') ? data['text'].toString() : '';
     item.appendChild(label);
 
@@ -98,7 +111,7 @@ class ContextMenu {
     }
 
     const hotkey = document.createElement('span');
-    hotkey.classList = 'hotkey';
+    hotkey.className = 'hotkey';
     hotkey.innerText = data.hasOwnProperty('hotkey') ? data['hotkey'].toString() : '';
     item.appendChild(hotkey);
 
@@ -231,7 +244,7 @@ class ContextMenu {
     }
   }
 
-  show(x, y) {
+  show(x: number, y: number) {
     this.dom = this.getMenuDom();
 
     this.dom.style.left = `${x}px`;
@@ -248,7 +261,7 @@ class ContextMenu {
     window.addEventListener('blur', this._onblur);
   }
 
-  setData(data) {
+  setData(data: any) {
     this.items = data;
   }
 
